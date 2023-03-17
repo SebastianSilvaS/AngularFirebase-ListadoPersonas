@@ -18,8 +18,8 @@ export class FormularioComponent {
   }
 
   limpiarcampos(){
-    (<HTMLInputElement>document.getElementById("nombre")).value = "";
-    (<HTMLInputElement>document.getElementById("apellido")).value = "";
+    (<HTMLInputElement>document.getElementById("nombre")).value ='';
+    (<HTMLInputElement>document.getElementById("apellido")).value ='';
   }
 
   onAgregarPersona(){
