@@ -1,4 +1,6 @@
-<form (ngSubmit)="f.form.valid && onAgregarPersona()" #f="ngForm" class="item">
+<div class="box">
+
+<form (ngSubmit)="f.form.valid && onGuardarPersona()" #f="ngForm" class="item">
       <input type="text" 
       name="nombre" 
       id="nombre" 
@@ -16,7 +18,11 @@
        >
        
       <button 
-      type="submit">
+      type="submit" style="cursor: pointer">
       +
       </button>
+      <button *ngIf="index !=null" type="submit" style="cursor: pointer"
+      class="buttonRed"
+      (click)="eliminarPersona()">-</button>
   </form>
+</div>
