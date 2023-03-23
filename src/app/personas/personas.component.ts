@@ -7,24 +7,31 @@ import { PersonasServices } from '../personas.service';
 @Component({
   selector: 'app-personas',
   templateUrl: './personas.component.html',
-  styleUrls: ['./personas.component.css']
+  styleUrls: ['./personas.component.css'],
 })
 export class PersonasComponent {
-
   personas: Persona[] = [];
 
   constructor(
-              private personasService: PersonasServices,
-              private router:Router
-              ){}
-              
+    private personasService: PersonasServices,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
-    this.personas = this.personasService.personas;
+    this.personasService.obtenerPersonas()
+    .subscribe(
+      (personas: Persona[]) => {
+        //Cargamos los datos de la base de datos al arreglo de personas local 
+        this.personas = personas;
+        this.personasService.setPersonas(this.personas);
+        console.log("obtener personas suscriber:" + this.personas);
+      }
+    );
+    
   }
 
-  agregar(){
-    this.router.navigate(['personas/agregar'])
+  irAgregar(){
+    console.log("nos vamos a agregar");
+    this.router.navigate(['./personas/agregar'],{queryParams:{modoEdicion:0}});
   }
-
-  
 }
